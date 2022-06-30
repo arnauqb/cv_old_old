@@ -1,0 +1,333 @@
+%!TeX program = pdflatex
+% Geoff Boeing's Curriculum Vitae
+% Email: boeing@usc.edu
+% Web: https://geoffboeing.com/
+% Repo: https://github.com/gboeing/cv
+
+\documentclass[12pt,letterpaper]{report}
+
+\usepackage[T1]{fontenc} % output T1 font encoding (8-bit) for accented characters as single glyph
+\usepackage[strict,autostyle]{csquotes} % smart and nestable quote marks
+\usepackage[USenglish]{babel} % regionalize hyphens, quote marks, etc automatically
+\usepackage{microtype}% improve text appearance with kerning, etc
+\usepackage{datetime} % enable formatting of date output
+\usepackage{tabto}    % make nice tabbing
+\usepackage{geometry} % manually set page margins
+\usepackage{enumitem} % enumerate with [resume] option
+\usepackage{titlesec} % allow custom section fonts
+\usepackage{setspace} % custom line spacing
+
+\usepackage{bibentry}
+\makeatletter\let\saved@bibitem\@bibitem\makeatother
+\usepackage{hyperref}
+\makeatletter\let\@bibitem\saved@bibitem\makeatother
+
+
+% what is your name?
+\newcommand{\myname}{Arnau Quera-Bofarull}
+
+% select default typefaces
+\usepackage{ebgaramond} % document's serif typeface
+\usepackage{helvet}     % document's sans serif typeface
+
+% how far to tab for list items with left-aligned date: different fonts need different widths
+\newcommand{\listtabwidth}{1.7cm}
+
+% define font to use as document's title
+\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
+
+% set section heading fonts and before/after spacing
+\SetTracking{encoding=*, family=\sfdefault}{30} % increase sans serif headings tracking
+\titleformat{\section}{\lsstyle\sffamily\small\bfseries\uppercase}{}{}{}{}
+\titlespacing{\section}{0pt}{30pt plus 4pt minus 4pt}{8pt plus 2pt minus 2pt}
+
+% set subsection heading fonts and before/after spacing
+\titleformat{\subsection}{\lsstyle\sffamily\footnotesize\bfseries}{}{}{}{}
+\titlespacing{\subsection}{0pt}{16pt plus 4pt minus 4pt}{4pt plus 2pt minus 2pt}
+
+% set page margins (assumes letter paper)
+\geometry{body={6.5in, 9.0in},
+    left=1.0in,
+    top=1.0in}
+
+% prevent paragraph indentation
+\setlength\parindent{0em}
+
+% set line spacing
+\setstretch{0.9}
+
+% define space between list items
+\newcommand{\listitemspace}{0.25em}
+
+% make unordered lists without bullets and use compact spacing
+\renewenvironment{itemize}
+{\begin{list}{}{\setlength{\leftmargin}{0em}
+                \setlength{\parskip}{0em}
+                \setlength{\itemsep}{\listitemspace}
+                \setlength{\parsep}{\listitemspace}}}
+{\end{list}}
+
+% make tabbed lists so content is left-aligned next to years
+\TabPositions{\listtabwidth}
+\newlist{tablist}{description}{3}
+\setlist[tablist]{leftmargin=\listtabwidth,
+    labelindent=0em,
+    topsep=0em,
+    partopsep=0em,
+    itemsep=\listitemspace,
+    parsep=\listitemspace,
+    font=\normalfont}
+
+% print only the month and year when using \today
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+% define hyperlink appearance and metadata for pdf properties
+\hypersetup{
+    colorlinks  = true,
+    urlcolor    = black,
+    pdfauthor   = {\myname},
+    pdfkeywords = {},
+    pdftitle    = {\myname: Curriculum Vitae},
+    pdfsubject  = {Curriculum Vitae},
+    pdfpagemode = UseNone
+}
+
+\begin{document}
+    \nobibliography{papers}
+    \bibliographystyle{unsrt}
+
+    \raggedright{}
+
+    % display your name as the document title
+    \namefont{\myname}
+
+    % affiliation and contact info blocks
+    \vspace{1em}
+    \begin{minipage}[t]{0.700\textwidth}
+        % current primary affiliation, left-aligned
+        Institute for Computational Cosmology\\
+        Department of Physics \\
+        Durham University
+    \end{minipage}
+    \begin{minipage}[t]{0.295\textwidth}
+        % contact info details, right-aligned
+        \flushright{}
+        \href{mailto:arnau.quera-bofarull@durham.ac.uk}{arnau.quera-bofarull@durham.ac.uk}\\
+        +44 7736996791\\
+        \href{www.arnau.space}{www.arnau.space}
+    \end{minipage}
+
+
+    \section*{Education}
+
+    \begin{tablist}
+
+        \item[Ph.D.] \tab{}Astrophysics and Data Science, Durham University, UK (Expected 2022)
+        \item[M.S.]  \tab{}Physics, Heidelberg University, Germany, 2017
+        \item[B.S.]  \tab{}Physics, University of Barcelona, Spain, 2015
+        \item[B.S.]  \tab{}Mathematics, University of Barcelona, Spain, 2015
+
+    \end{tablist}
+
+    \section*{Research Experience}
+
+    \begin{tablist}
+
+        \item[2017--]   \tab{}Institute for Computational Cosmology,  Durham University, UK\\
+                                Development of HPC code to calculate black hole outflows.
+        \item[2020--]   \tab{}United Nations Global Pulse, USA\\
+                                Modelling the spread of Covid-19 in refugee camps with agent-based simulations.
+        \item[2020--]   \tab{}Institute for Data Science, Durham University, UK\\
+                                Main developer of the \textsc{June} codebase, an agent-based model to simulate the spread of Covid-19 with fine grained population data. 
+        \item[2019]   \tab{}Centre for Computational Sciences, Tsukuba University, Japan\\
+                                Modelling of Active Galactic Nuclei accretion discs with HPC simulations.
+        \item[2019]   \tab{}Centre for Research on Education and Social Justice, York University, UK\\
+                                Application of Machine Learning algorithms to predicting progression to postgraduate studies in England.
+        \item[2019]   \tab{}Boeing Digital Aviation \& Analytics, Germany\\
+                                Computer vision for process tracking in aircraft ground operations.
+        \item[2018]   \tab{}Ibex Innovations, UK\\
+                                Computer vision for X-ray medical image segmentation.
+                                
+    \end{tablist}
+
+
+    %\section*{Appointments}
+
+    %\begin{tablist}
+
+    %    \item[2019--]   \tab{}University of Southern California \\
+    %                         Assistant Professor, Department of Urban Planning and Spatial Analysis, 2019-- \\
+    %                         Affiliate Faculty, Spatial Sciences Institute, 2021--
+
+    %    \item[2018--19] \tab{}Northeastern University \\
+    %                         Assistant Professor, School of Public Policy and Urban Affairs \\
+    %                         Affiliate Faculty, Network Science Institute \\
+    %                         Affiliate Faculty, Global Resilience Institute
+
+    %    \item[2017--18] \tab{}University of California, Berkeley \\
+    %                         Postdoctoral Researcher, Department of City and Regional Planning
+
+    %\end{tablist}
+
+
+
+    %\section*{Research Areas}
+
+    %\begin{itemize}
+
+    %    \item Urban informatics and geospatial data science: computational statistics, visualization, and spatial analysis
+    %    \item Transportation planning: street network design, access, equity, and urban form
+    %    \item Housing: emerging technology platforms' impacts on markets, residential mobility, and segregation
+
+    %\end{itemize}
+
+
+
+    \section*{Publications}
+
+    \subsection*{Journal Articles}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}\bibentry{cuesta-lazaro_vaccinations_2021}
+
+        \item[2021] \tab{}\bibentry{bullock_operational_2021}
+
+        \item[2020] \tab{}\bibentry{aylett-bullock_june_nodate}
+
+        \item[2020] \tab{}\bibentry{quera-bofarull_qwind_2020}
+
+        \item[2018] \tab{}\bibentry{cuesta-lazaro_gravitational_2018}
+
+    \end{tablist}
+
+
+    \subsection*{Conference Proceedings}
+
+    \begin{tablist}
+
+        \item[2019] \tab{}\bibentry{bullock_xnet_2019}
+
+    \end{tablist}
+
+
+    \section*{Invited Talks}
+
+    \begin{tablist}
+
+    \item[2020] \tab{}\enquote{\textsc{JUNE}: Modelling the spread of Covid-19 in England}. Public Health England modelling group, Cambridge, UK. Jul 3.
+
+    \item[2020] \tab{}\enquote{Simulating UV line-driven winds in AGNs.} Hokkaido University, Japan. Feb 5.
+
+    \item[2019] \tab{}\enquote{Computer vision for X-ray medical image segmentation.} Rutherford Appleton Laboratory, UK, Mar 5.
+
+
+    \end{tablist}
+
+    \subsection*{Campus Talks}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}\enquote{10 reason why I use (and love) Julia} Institute for Computational Cosmology, Durham, UK, Mar 29.
+
+        \item[2019] \tab{}\enquote{Deep Learning and graph networks} Institute for Data Science, Durham, UK, Oct. 17
+
+        \item[2018] \tab{}\enquote{Simulating AGN feedback.} Institute for Computational Cosmology, Durham, UK, Dec 18.
+
+    \end{tablist}
+
+
+    \section*{Conference Activity}
+
+    \subsection*{Talks}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}\enquote{UV line-driven winds: Dependence on black hole properties.} Black hole accretion disc winds. Durham, UK.\@ Sep 6--9.
+
+        \item[2019] \tab{}\enquote{Computer vision for X-ray medical image segmentation.} Beyond the Lab. Edinburgh, UK.\@ Jan 24.
+
+    \end{tablist}
+
+    \subsection*{Poster presentations}
+
+    \begin{tablist}
+
+        \item[2019] \tab{}\enquote{UV line-driven winds}. Feedback and its role in galaxy formation. Spetses, Greece. June 25--29.
+
+    \end{tablist}
+
+    \subsection*{Sessions Organized}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}STFC Data Intensive Science Summer School 2021. Durham, UK. Sep 13--17.
+
+    \end{tablist}
+
+
+
+    \section*{Grants and Awards}
+
+    \subsection*{Awards and Honors}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}RAMP Early Career Investigator Award (RECIA), Royal Society
+        \item[2020] \tab{}Department of Physics Award for Excellence 2020, Durham University
+        \item[2019] \tab{}No-Bull award (Carmen Optimization Workshop), Boeing
+
+    \end{tablist}
+
+    \subsection*{Grants and Fellowships}
+
+    \begin{tablist}
+
+        \item[2019] \tab{}JSPS Short Term Pre/Postdoctoral Fellowship (\pounds 6,500).
+        \item[2017-] \tab{}STFC CDT Scholarship
+
+    \end{tablist}
+
+    \section*{Teaching}
+
+    \subsection*{Durham University}
+
+    \begin{itemize}
+
+        \item Planets and Cosmology (2017,2018,2020)
+        \item Version control with Git (2020, 2021)
+
+    \end{itemize}
+
+    \section*{Outreach}
+
+    \begin{tablist}
+
+        \item[2019] \tab{}\enquote{Changing Cosmic Percetions}. Durham, UK.
+        \item[2018,19] \tab{}\enquote{Celebrate Science}. Durham, UK.
+        \item[2018] \tab{}\enquote{From Atoms to Galaxies}. Durham, UK.
+
+    \end{tablist}
+
+    \section*{Languages}
+
+    \begin{tablist}
+
+    \item Catalan (Native)
+    \item English (Fluent)
+    \item German (Intermediate)
+    \item Japanese (Elementary)
+    \item Spanish (Native)
+
+    \end{tablist}
+
+
+
+
+    % display today's date as Month Year after a vertical space below the end of the text
+    \begin{center}
+        \vfill
+        Updated \monthyeardate\today
+    \end{center}
+
+\end{document}
